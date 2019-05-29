@@ -22,8 +22,11 @@
                         <div class="card mb-2">
                             <div class="row no-gutters">
                                 <div class="card-body p-3">
-                                    <div class="row pl-3">
-                                        <h3 class="card-title"><%= user.username %></h3>
+
+                                    <h3 class="card-title"><%= user.username %></h3>
+
+                                    <a class="card-text"><%= user.email %></a><br>
+                                    <div class="row pl-0 pt-2">
                                         <form class="pl-4" action="/users/profile/<%= user.username %>" method="GET">
                                             <button class="btn btn-primary">View</button>
                                         </form>
@@ -31,7 +34,6 @@
                                             <button class="btn btn-danger">Delete</button>
                                         </form>
                                     </div>
-                                    <a class="card-text"><%= user.email %></a><br>
                                 </div>
                             </div>
                         </div>
