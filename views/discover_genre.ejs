@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blook - Discover</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="/css/publish.css" rel="stylesheet">
+</head>
+<body>
+
+<% include ./navbar.ejs %>
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <div class="card mb-1">
+                <div class="card-header" id="catagory">Genres</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Adventure' %>">Adventure</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Comic Book' %>">Comic Book</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Drama' %>">Drama</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Fiction' %>">Fiction</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Horror' %>">Horror</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Mystery' %>">Mystery</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Romance' %>">Romance</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Sci-Fi' %>">Sci-Fi</a></li>
+                    <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Others' %>">Others</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
+            <div class="card mb-1">
+                <div class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/discover">Latest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/discover/mostviewed">Most Viewed</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <% books.reverse().forEach(function(book){ %>
+                <% users.forEach(function(user){ %>
+                    <% if(book.reviewer == user._id) { %>
+                        <% if(book.genre == name) { %>
+                            <% include ./books_show.ejs %>
+                        <% } %>
+                    <% } %>
+                <% }); %>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="/js/fading.js"></script>
+</body>
+</html>

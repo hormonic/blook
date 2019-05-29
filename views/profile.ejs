@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blook - <%= user.username %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="/css/publish.css" rel="stylesheet">
+</head>
+<body>
+
+<% include ./navbar.ejs %>
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+            <% if(me.username === user.username) { %>
+            <form class="pl-0" action="/users/edit/<%= user._id %>" method="POST" enctype="multipart/form-data">
+                <% } %>
+                <div class="card-group mb-3">
+                    <div class="card col-12 col-md-8">
+                        <div class="card-body">
+                            <h1 class="card-title"><%= user.username %></h1>
+                            <a class="card-text"><%= user.level %></a><br>
+                            <a class="card-text"><%= user.email %></a><br><br>
+                            <a class="card-text pl-1">Bio :</a>
+                            <% if(me.username === user.username) { %>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="bio"><%= user.bio %></textarea>
+                                </div>
+                                <button class="btn btn-primary" name="submit">Save</button>
+                            <% } else { %>
+                                <div class="form-group">
+                                    <p class="card-text"><%= user.bio %></p>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="card col-12 order-first col-md-4 order-md-last">
+                        <div class="card-body pt-3 pl-3 pr-3">
+                            <div class="warp">
+                                <div class="thumb">
+                                    <img id="img"
+                                         src="data:image/jpeg;base64, <%= (user.image.data).toString('base64') %>"
+                                         class="img-fluid" width="100%">
+                                </div>
+                                <% if(me.username === user.username) { %>
+                                    <div class="pt-2" style="text-align:center;">
+                                        <label for="upload">Upload
+                                            <input type='file' name="image" id="upload" accept=".jpg, .jpeg"/>
+                                        </label>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% if(me.username === user.username) { %>
+            </form>
+            <% } %>
+            <% books.reverse().forEach(function(book){ %>
+                <% if(user._id == book.reviewer){ %>
+                    <% include ./books_show.ejs %>
+                <% } %>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<script src="/jquery-3.3.1.min.js"></script>
+<script src="/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="/js/publish.js"></script>
+<script src="/js/imgup.js"></script>=
+<script src="/js/fading.js"></script>
+</body>
+</html>
