@@ -35,7 +35,9 @@
                 <div class="card-body pt-2">
                     <p class="card-text">Written by <%= book.author %></p>
                     <p class="card-text">Genre: <%= book.genre %></p>
-                    <p class="card-text pt-2 pb-2" style="line-height: normal;">&emsp;&emsp;&emsp;&emsp;&emsp;<%= book.body %></p>
+                    <p class="card-text pt-2 pb-2"
+                       style="font-family: 'Pridi', serif; line-height: 2; font-size: 17px;">
+                        &emsp;&emsp;&emsp;<%= book.body %></p>
                     <% if(user){ %>
                         <% if(user._id == book.reviewer){ %>
                             <div class="row pl-4">

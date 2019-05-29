@@ -104,7 +104,7 @@ app.get('/discover', function (req, res) {
 });
 
 app.get('/discover/mostviewed', function (req, res) {
-    Book.find({}, null, {sort: {view: 1}, limit: 4}, function (err, books) {
+    Book.find({}, null, {sort: {view: 1}}, function (err, books) {
         User.find({}, function (err, users) {
             if (err) {
                 console.log("ERROR: " + err);

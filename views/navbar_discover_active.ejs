@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand" href="/discover">
+        <img src="/css/images/blook-logo.png" height="30" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarNav">
+        <ul class="navbar-nav ml-sm-3 mr-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="/discover">Discover</a>
+            </li>
+            <% if(user){ %>
+                <li class="nav-item ml-sm-2">
+                    <a class="nav-link" href="/books/publish">Publish</a>
+                </li>
+                <% if(user.level === 'Handler') { %>
+                    <li class="nav-item ml-sm-2">
+                        <a class="nav-link" href="/users/del">Users</a>
+                    </li>
+                <% } %>
+            <% } %>
+        </ul>
+        <ul class="navbar-nav">
+            <% if(user){ %>
+                <li class="nav-item mr-sm-2 mb-sm-0 mb-2">
+                    <a class="btn btn-primary" href="/users/profile/<%= user.username %>"><%= user.username %></a>
+                </li>
+                <li class="nav-item mr-sm-2">
+                    <a class="btn btn-primary" href="/users/logout">Log Out</a>
+                </li>
+            <% } else{ %>
+                <li class="nav-item mr-sm-2 mb-sm-0 mb-2">
+                    <a class="btn btn-primary" href="#signupModal" data-toggle="modal">Sign up</a>
+                </li>
+                <li class="nav-item mr-sm-2">
+                    <a class="btn btn-primary" href="#loginModal" data-toggle="modal">Log In</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
+
+<!-- Modal - Log in -->
+<div id="loginModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Blooker Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/users/login" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
+                    </div>
+                </form>
+                <p class="hint-text"><a href="#">Forgot Password?</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Sign up -->
+<div id="signupModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Blooker sign up</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="login" action="/users/register" method="post"
+                      onsubmit="event.preventDefault(); validateMyForm();">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email address" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                               required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password_conf" name="passwordConf"
+                               placeholder="Confirm Password" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Confirm">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- messages('message', locals) %>
+
+<script type="text/javascript">
+    let passWordField = document.getElementById('password')
+    let passWordConfirmField = document.getElementById('password_conf')
+    let form = document.getElementById('login')
+
+    function validateMyForm() {
+        if (passWordField.value != passWordConfirmField.value) {
+            alert("Passwords do not match. Please try again.");
+        } else {
+            form.submit()
+        }
+    }
+</script>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Kanit');
+@import url('https://fonts.googleapis.com/css?family=Kanit|Pridi:300&display=swap');
 
 body {
   font-family: 'Kanit', sans-serif;
@@ -9,10 +9,15 @@ body {
   -o-background-size: cover;
 }
 
-#catagory {
+#category {
   background-color: #ff5534;
   text-align: center;
   color: white;
+}
+
+footer {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 1em 2em;
 }
 
 .thumb{

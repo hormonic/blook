@@ -6,7 +6,7 @@ let Book = require('../models/book');
 let User = require('../models/user');
 let upload = require('../models/multer');
 
-router.get('/publish', function (req, res) {
+router.get('/publish', ensureAuthenticated, function (req, res) {
     res.render('publish');
 });
 
@@ -159,13 +159,6 @@ router.get('/:id', function (req, res) {
                 });
             });
         });
-    });
-});
-
-router.post('/:id/act', (req, res, next) => {
-    const action = req.body.action;
-    const counter = action;
-    Book.update({_id: req.params.id}, {$inc: {view: counter}}, {}, (err, numberAffected) => {
     });
 });
 

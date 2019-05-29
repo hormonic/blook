@@ -11,13 +11,13 @@
 </head>
 <body>
 
-<% include ./navbar.ejs %>
+<% include ./navbar_discover_active.ejs %>
 
 <div class="container-fluid mt-3">
     <div class="row">
         <div class="col-12 col-md-3">
             <div class="card mb-1">
-                <div class="card-header" id="catagory">Genres</div>
+                <div class="card-header" id="category">Genres</div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Adventure' %>">Adventure</a></li>
                     <li class="list-group-item"><a class="text-decoration-none text-danger" href="/books/genre/<%= 'Comic Book' %>">Comic Book</a></li>
@@ -44,19 +44,26 @@
                     </ul>
                 </div>
             </div>
-            <% books.reverse().forEach(function(book){ %>
-                <% users.forEach(function(user){ %>
-                    <% if(book.reviewer == user._id) { %>
-                        <% include ./books_show.ejs %>
-                    <% } %>
+            <div class="list">
+                <% books.reverse().forEach(function(book){ %>
+                    <% users.forEach(function(user){ %>
+                        <% if(book.reviewer == user._id) { %>
+                            <% include ./books_show.ejs %>
+                        <% } %>
+                    <% }); %>
                 <% }); %>
-            <% }); %>
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-danger mb-5 mt-2" id="next">Show More..</button>
+            </div>
         </div>
     </div>
 </div>
 
-<script src="jquery-3.3.1.min.js"></script>
-<script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="/jquery-3.3.1.min.js"></script>
+<script src="/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 <script src="/js/fading.js"></script>
+<script src="/js/showmore.js"></script>
 </body>
+<% include ./footer.ejs %>
 </html>
