@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blook - Publish</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="/css/publish.css" rel="stylesheet">
+</head>
+<body>
+
+<% include ./navbar.ejs %>
+
+<form action="/books/create" method="post" enctype="multipart/form-data">
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="card mb-2">
+                    <div class="card-body pt-3 pl-3 pr-3">
+                        <div class="warp">
+                            <div class="thumb">
+                                <img id="img" src="/css/images/296266-P749CB-275.jpg" class="img-fluid" width="100%"/>
+                            </div>
+                            <div class="pt-2" style="text-align:center;">
+                                <label for="upload">Upload
+                                    <input type='file' name="image" id="upload" accept=".jpg, .jpeg"/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Book Title"
+                                   name="title" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Author"
+                                   name="author" required="">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Begin your journey..." name="body" required=""></textarea>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="genre" required="">
+                                <option selected="true" disabled="disabled">Pick a Genre</option>
+                                <option>Adventure</option>
+                                <option>Comic Book</option>
+                                <option>Drama</option>
+                                <option>Fiction</option>
+                                <option>Horror</option>
+                                <option>Mystery</option>
+                                <option>Romance</option>
+                                <option>Sci-Fi</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" name="submit" value="Publish">Publish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="/jquery-3.3.1.min.js"></script>
+<script src="/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="/js/publish.js"></script>
+<script src="/js/fading.js"></script>
+<script src="/js/imgup.js"></script>
+</body>
+</html>

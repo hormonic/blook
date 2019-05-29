@@ -1,0 +1,18 @@
+<div class="card mb-2">
+    <div class="row no-gutters justify-content-center">
+        <div class="col-6 col-md-2">
+            <div class="card-body p-2">
+                <img src="data:image/jpeg;base64, <%= (book.image.data).toString('base64') %>" class="img-fluid img-thumbnail" width="100%"/>
+            </div>
+        </div>
+        <div class="col-12 col-md-10">
+            <div class="card-body p-3">
+                <h5 class="card-title"><%= book.title %></h5>
+                <a class="card-text">Written by: <%= book.author %></a><br>
+                <a class="card-text">Genre: <%= book.genre %></a><br>
+                <a class="card-text"><%= book.view %> Views</a>
+            </div>
+        </div>
+    </div>
+    <a class="stretched-link" href="/books/<%= book._id %>"></a>
+</div>

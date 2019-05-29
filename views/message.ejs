@@ -1,0 +1,12 @@
+<div class="row justify-content-center">
+    <div class="col-9 text-center">
+        <div class="messages">
+            <br>
+            <% Object.keys(messages).forEach(function (type) {
+            messages[type].forEach(function (message) { %>
+                <div class="alert alert-<%= type %>"> <%= message %> </div>
+            <% }) %>
+            <% }) %>
+        </div>
+    </div>
+</div>

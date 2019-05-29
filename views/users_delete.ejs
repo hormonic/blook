@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blook - Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="/css/publish.css" rel="stylesheet">
+</head>
+<body>
+
+<% include ./navbar.ejs %>
+
+<% if(user.level === 'Handler'){ %>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-10 col-md-10 mx-auto">
+                <% users.forEach(function(user){ %>
+                    <% if(user.level != 'Handler') { %>
+                        <div class="card mb-2">
+                            <div class="row no-gutters">
+                                <div class="card-body p-3">
+                                    <div class="row pl-3">
+                                        <h3 class="card-title"><%= user.username %></h3>
+                                        <form class="pl-4" action="/users/profile/<%= user.username %>" method="GET">
+                                            <button class="btn btn-primary">View</button>
+                                        </form>
+                                        <form class="pl-1" action="/users/del/<%= user._id %>" method="POST">
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                    <a class="card-text"><%= user.email %></a><br>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<script src="/jquery-3.3.1.min.js"></script>
+<script src="/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="/js/publish.js"></script>
+<script src="/js/fading.js"></script>
+<script src="/js/imgup.js"></script>
+</body>
+</html>

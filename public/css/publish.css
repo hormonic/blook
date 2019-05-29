@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background: url("images/90682.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+#catagory {
+  background-color: #ff5534;
+  text-align: center;
+  color: white;
+}
+
+.thumb{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  cursor:move;
+}
+
+.thumb:before{
+  content:"";
+  display:block;
+  position:absolute;
+  width:96%;
+  height:96%;
+  border:3px dashed #eee;
+  z-index:9;
+  top:1%;
+  left:1%;
+  opacity:0;
+  transition:all 0.2s;
+  pointer-events:none
+}
+
+.thumb:hover::before{
+  opacity:0.6
+}
+
+.thumb img{
+  width:100% !important;
+  transition:all 0.4s;
+}
+
+label[for=upload]{
+  display:inline-block;
+  border:2px solid #ccc;
+  color:#666;
+  background:#eee;
+  padding:8px 14px;
+  border-radius:5px;
+  cursor:pointer
+}
+label[for=upload]:hover{
+  background:#ddd
+}
+
+label[for=upload] input{ display:none }
+
+.modal-login {
+  width: 350px;
+}
+
+.modal-login .modal-content {
+  padding: 20px;
+  border-radius: 1px;
+  border: none;
+}
+
+.modal-login .modal-header {
+  border-bottom: none;
+  position: relative;
+  justify-content: center;
+}
+
+.modal-login h4 {
+  text-align: center;
+  font-size: 26px;
+}
+
+.modal-login .form-control, .modal-login .btn {
+  min-height: 40px;
+  border-radius: 1px;
+}
+
+.modal-login .hint-text {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.modal-login .close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.modal-login .btn {
+  background: #3498db;
+  border: none;
+  line-height: normal;
+}
+
+.modal-login .btn:hover, .modal-login .btn:focus {
+  background: #248bd0;
+}
+
+.modal-login .hint-text a {
+  color: #999;
+}
+
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
