@@ -8,6 +8,8 @@ const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
 
+const PORT = process.env.PORT || 5000;
+
 mongoose.connect(config.database);
 let db = mongoose.connection;
 
@@ -120,6 +122,6 @@ app.use('/books', books);
 app.use('/users', users);
 
 // Start Server
-app.listen(3000, function () {
-    console.log('Server started on port 3000...');
+app.listen(PORT, function () {
+    console.log('Server started on port 5000...');
 });
