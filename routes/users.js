@@ -142,10 +142,12 @@ router.post('/edit/:id', upload.single('image'), function (req, res) {
             bio: req.body.bio,
             image: {}
         };
+
         let img = fs.readFileSync(req.file.path);
         let encode_image = img.toString('base64');
         user.image.filename = req.file.filename;
         user.image.data = new Buffer(encode_image, 'base64');
+
     } if (!req.file) {
         user = {
             bio: req.body.bio

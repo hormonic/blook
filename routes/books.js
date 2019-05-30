@@ -99,8 +99,8 @@ router.post('/edit/:id', upload.single('image'), function (req, res) {
 
         let img = fs.readFileSync(req.file.path);
         let encode_image = img.toString('base64');
-        newbook.image.filename = req.file.filename;
-        newbook.image.data = new Buffer(encode_image, 'base64');
+        book.image.filename = req.file.filename;
+        book.image.data = new Buffer(encode_image, 'base64');
 
     } else if (!req.file) {
         book = {
